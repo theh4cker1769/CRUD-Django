@@ -6,7 +6,7 @@
     <h1 class="text-center alert alert-info">Working with Alien</h1>
     <div class="row">
         <div class="col-md-4">
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{form}}
                 <input type="submit" class="btn btn-success" value="Add">
@@ -21,6 +21,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
+                        <th scope="col">Profile</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -31,6 +32,7 @@
                         <td>{{stu.name}}</td>
                         <td>{{stu.email}}</td>
                         <td>{{stu.phone}}</td>
+                        <td><img src="{{stu.profileImg.url}}" alt="{{stu.name}}" width="100px" height="100px"></td>
                         <td>
                             <a href="{% url 'update' stu.id %}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{% url 'delete' stu.id %}" method="post" class="d-inline">
